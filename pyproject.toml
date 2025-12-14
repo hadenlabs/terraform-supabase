@@ -1,7 +1,7 @@
 # https://docs.astral.sh/uv/reference/settings/
 # https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 [project]
-name = "base-template"
+name = "terraform-supabase"
 description = "base template"
 version = "0.0.0"
 license = "LGPL-3.0"
@@ -9,13 +9,13 @@ readme = "README.md"
 requires-python = ">=3.9"
 keywords = []
 authors = [{ name = "Luis Mayta", email = "luis@hadenlabs.com" }]
-repository = "https://github.com/hadenlabs/base-template"
+repository = "https://github.com/hadenlabs/terraform-supabase"
 
 dependencies = ["boto3>=1.26.130"]
 
 [project.urls]
-Source = "https://github.com/hadenlabs/base-template"
-Tracker = "https://github.com/hadenlabs/base-template/-/issues"
+Source = "https://github.com/hadenlabs/terraform-supabase"
+Tracker = "https://github.com/hadenlabs/terraform-supabase/-/issues"
 
 [dependency-groups]
 

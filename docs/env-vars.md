@@ -1,7 +1,7 @@
 <!-- Space: Projects -->
-<!-- Parent: BaseTemplate -->
-<!-- Title: EnvVars BaseTemplate -->
-<!-- Label: BaseTemplate -->
+<!-- Parent: TerraformSupaBase -->
+<!-- Title: EnvVars TerraformSupaBase -->
+<!-- Label: TerraformSupaBase -->
 <!-- Label: Project -->
 <!-- Label: EnvVars -->
 <!-- Include: disclaimer.md -->

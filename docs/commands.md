@@ -1,7 +1,7 @@
 <!-- Space: Projects -->
-<!-- Parent: BaseTemplate -->
-<!-- Title: Commands BaseTemplate -->
-<!-- Label: BaseTemplate -->
+<!-- Parent: TerraformSupaBase -->
+<!-- Title: Commands TerraformSupaBase -->
+<!-- Label: TerraformSupaBase -->
 <!-- Label: Project -->
 <!-- Label: Commands -->
 <!-- Include: disclaimer.md -->
