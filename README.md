@@ -12,29 +12,25 @@
 
   -->
 
-[![Latest Release](https://img.shields.io/github/release/hadenlabs/terraform-supabase)](https://github.com/hadenlabs/terraform-supabase/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/terraform-supabase/lint-code)](https://github.com/hadenlabs/terraform-supabase/actions?workflow=lint-code) [![CI](https://img.shields.io/github/workflow/status/hadenlabs/terraform-supabase/ci)](https://github.com/hadenlabs/terraform-supabase/actions?workflow=ci) [![Test](https://img.shields.io/github/workflow/status/hadenlabs/terraform-supabase/test)](https://github.com/hadenlabs/terraform-supabase/actions?workflow=test) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange)](https://keepachangelog.com)
+[![Latest Release](https://img.shields.io/github/release/hadenlabs/terraform-supabase)](https://github.com/hadenlabs/terraform-supabase/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/terraform-supabase/lint-code)](https://github.com/hadenlabs/terraform-supabase/actions?workflow=lint-code) [![CI](https://img.shields.io/github/workflow/status/hadenlabs/terraform-supabase/ci)](https://github.com/hadenlabs/terraform-supabase/actions?workflow=ci) [![Test](https://img.shields.io/github/workflow/status/hadenlabs/terraform-supabase/test)](https://github.com/hadenlabs/terraform-supabase/actions?workflow=test) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange)](https://keepachangelog.com) [![Terraform Version](https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform)](https://github.com/hashicorp/terraform/releases)
 
 # terraform-supabase
 
 terraform-supabase for project
 
+## Modules
+
+- Realm [Realm](modules/realm/README.md)
+- User [User](modules/user/README.md)
+
 ## Requirements
 
-This is a list of plugins that need to be installed previously to enjoy all the goodies of this configuration:
+This is a list of requirements that need to be installed previously to enjoy all the goodies of this configuration:
 
 - [gomplate](https://github.com/hairyhenderson/gomplate)
+- [terraform](https://github.com/hashicorp/terraform)
 - [python](https://www.python.org)
 - [taskfile](https://github.com/go-task/task)
-
-## Usage
-
-# How to use this project
-
-## Replace name project to New Project
-
-```bash
-agr 'terraform-supabase' 'new-project'
-```
 
 ## Examples
 
@@ -55,7 +51,7 @@ task setup
 
 ## Help
 
-**Got a question?**
+### Got a question?
 
 File a GitHub [issue](https://github.com/hadenlabs/terraform-supabase/issues).
 

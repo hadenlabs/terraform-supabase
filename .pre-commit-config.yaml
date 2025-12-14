@@ -1,6 +1,9 @@
 ci:
   autoupdate_schedule: monthly
 
+default_language_version:
+  node: 24.11.1
+
 default_stages:
   - pre-commit
 exclude: >
@@ -9,6 +12,7 @@ exclude: >
     .+\.node_modules\/.*$|
     .+\.external_modules.*$|
     .+\.terraform.*$|
+    pnpm-lock.yaml|
     .+\.venv.*$|
     .+\.lock$|
     .+\.mdx$|
@@ -16,7 +20,7 @@ exclude: >
 
 repos:
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.3.0
+    rev: v2.4.0
     hooks:
       - id: codespell
         args:
@@ -27,6 +31,8 @@ repos:
             go.sum|
             app/ia/datasets\/.*$|
             openapi.yaml|
+            CHANGELOG.md|
+            pnpm-lock.yaml|
             .+\.vendor\/.*$|
             .+\.node_modules\/.*$|
             .+\.sops.*$|
@@ -69,6 +75,7 @@ repos:
       - id: file-contents-sorter
       - id: fix-encoding-pragma
       - id: sort-simple-yaml
+
   - repo: https://github.com/tcort/markdown-link-check
     rev: v3.12.2
     hooks:
@@ -95,6 +102,20 @@ repos:
           )$
         args:
           - --exclude=SC1072,SC1073,SC2068
+      - id: validate-toml
+      - id: no-go-testing
+      - id: golangci-lint
+        args:
+          - --fix
+          - --config=.ci/linters/.golangci.yml
+      - id: terragrunt-fmt
+        exclude: >
+          (?x)^(
+            .external_modules.*$|
+          )$
+      - id: terraform-fmt
+      - id: terraform-tfsec
+        exclude: .terraform
       - id: gitleaks
         args:
           - --path=.

@@ -173,3 +173,38 @@ commit_args = ""
 filename = "sonar-project.properties"
 search = 'sonar.projectVersion={current_version}'
 replace = 'sonar.projectVersion={new_version}'
+
+[[tool.bumpversion.files]]
+filename = "package.json"
+search = '"version": "{current_version}"'
+replace = '"version": "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "internal/version/version.go"
+search = '{current_version}'
+replace = '{new_version}'
+
+[[tool.bumpversion.files]]
+filename = "docs/examples/common.md"
+search = 'ref={current_version}'
+replace = 'ref={new_version}'
+
+[[tool.bumpversion.files]]
+filename = "modules/oidc/docs/usage.md"
+search = 'ref={current_version}'
+replace = 'ref={new_version}'
+
+[[tool.bumpversion.files]]
+filename = "modules/openid/docs/usage.md"
+search = 'ref={current_version}'
+replace = 'ref={new_version}'
+
+[[tool.bumpversion.files]]
+filename = "modules/realm/docs/usage.md"
+search = 'ref={current_version}'
+replace = 'ref={new_version}'
+
+[[tool.bumpversion.files]]
+filename = "modules/user/docs/usage.md"
+search = 'ref={current_version}'
+replace = 'ref={new_version}'

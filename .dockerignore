@@ -2,4 +2,8 @@
 !.coveragerc
 !.env
 !.pylintrc
+!.zipignore
+!pnpm-lock.yaml
 .venv
+*.lock
+node_modules

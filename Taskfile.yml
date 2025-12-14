@@ -47,6 +47,8 @@ includes:
   terraform:
     taskfile: "https://raw.githubusercontent.com/hadenlabs/tasks/refs/heads/main/src/terraform/Taskfile.yml"
 
+  module_project: ./modules/project/Taskfile.yml
+
 env:
   DOCKER:
     sh: docker --version 2> /dev/null || echo "not exist"
@@ -131,11 +133,18 @@ tasks:
       - changelog:check
       - git:check
       - docs:check
+      - sonar:check
+      - go:check
 
   readme:
+    run: once
     desc: Generate Readme
     silent: true
     cmds:
+      - task: terraform:doc
+        vars:
+          TERRAFORM_PATH: modules/project
+      - task: module_project:readme
       - >-
         gomplate --file {{.README_TEMPLATE}}
         --out {{.README_FILE}}
@@ -144,10 +153,13 @@ tasks:
       - task: prettier
 
   prettier:
+    run: once
     desc: Execute prettier files
     cmds:
+      - task: go:fix
       - task: prettier:all
       - task: uv:fmt
+      - task: terraform:fmt
 
   test:
     desc: Execute of test
@@ -155,10 +167,12 @@ tasks:
       - task: go:test
 
   upgrade:
+    run: once
     desc: Execute upgrade packages
     cmds:
       - uv update
       - uv run pre-commit autoupdate
+      - task: pnpm:update
 
   setup:
     desc: Setup dependences of project
@@ -167,13 +181,15 @@ tasks:
         [ -e ".env" ] || cp -rf .env.example .env
       - task: uv:setup
       - task: uv:precommit
+      - task: go:setup
+      - task: pnpm:setup
       - task: git:setup
 
   environment:
     desc: Setup environment of project
     cmds:
-      - task: terraform:environment
       - task: uv:environment
+      - task: terraform:environment
       - task: pnpm:environment
 
   generate:

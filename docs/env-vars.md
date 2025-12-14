@@ -9,6 +9,6 @@
 
 ---
 
-## Env Vars
+## EnvVars
 
 ### Application
