@@ -20,8 +20,7 @@ terraform-supabase for project
 
 ## Modules
 
-- Realm [Realm](modules/realm/README.md)
-- User [User](modules/user/README.md)
+- Project [Realm](modules/project/README.md)
 
 ## Requirements
 

@@ -61,8 +61,7 @@ requirements: |-
 
 # Modules
 modules:
-  - "Realm [Realm](modules/realm/README.md)"
-  - "User [User](modules/user/README.md)"
+  - "Project [Realm](modules/project/README.md)"
 
 # usages:
 #   - docs/usage.md
