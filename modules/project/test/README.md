@@ -73,6 +73,7 @@ go test -race -v ./modules/project/... -coverprofile cover.out -timeout 60m
 ### TestProjectBasicSuccess
 
 Tests the basic functionality of the module with:
+
 - All required variables provided
 - Module enabled (`module_enabled = true`)
 - Optional variables with values
@@ -83,6 +84,7 @@ Tests the basic functionality of the module with:
 ### TestProjectDisabledSuccess
 
 Tests the module when disabled with:
+
 - All required variables provided
 - Module disabled (`module_enabled = false`)
 - Optional variables as `null`
@@ -107,6 +109,7 @@ All tests use Terratest's `defer terraform.Destroy()` pattern to ensure resource
 ## Build Tags
 
 Tests in this directory use the `integration` build tag (`//go:build integration`) to separate them from unit tests. This allows:
+
 - Running only unit tests: `go test ./...`
 - Running only integration tests: `go test -tags=integration ./...`
 - Running all tests: `go test -tags=integration ./...` (plus unit tests separately)
@@ -129,21 +132,27 @@ When adding new integration tests:
 ### Common Issues
 
 1. **Provider Authentication Errors**
+
    ```
    Error: error configuring Supabase provider: access token is required
    ```
+
    Solution: Set `SUPABASE_ACCESS_TOKEN` environment variable
 
 2. **Organization Not Found**
+
    ```
    Error: organization not found
    ```
+
    Solution: Use a valid organization ID that exists in your Supabase account
 
 3. **Region Not Available**
+
    ```
    Error: region not available
    ```
+
    Solution: Check available regions in your Supabase organization
 
 4. **Build Tag Issues**

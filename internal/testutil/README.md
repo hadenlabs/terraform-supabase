@@ -262,6 +262,6 @@ go test ./internal/testutil/... -v
 
 ## See Also
 
-- [Faker Package](../app/external/faker/) - For generating realistic test data
+- [Faker Package](/internal/app/external/faker/) - For generating realistic test data
 - [Terratest](https://github.com/gruntwork-io/terratest) - For Terraform testing framework
-- [Project Module Tests](../../modules/project/test/) - For integration test examples
+- [Project Module Tests](/modules/project/test/) - For integration test examples

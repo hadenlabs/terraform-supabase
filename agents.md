@@ -2,10 +2,7 @@
 
 ## Información del Proyecto
 
-**Nombre:** terraform-supabase
-**Tipo:** Módulo de Terraform para gestionar proyectos de Supabase
-**Versión de Terraform:** >= 1.0.0
-**Proveedor:** supabase/supabase (v1.7.0)
+**Nombre:** terraform-supabase **Tipo:** Módulo de Terraform para gestionar proyectos de Supabase **Versión de Terraform:** >= 1.0.0 **Proveedor:** supabase/supabase (v1.7.0)
 
 ## Estructura del Proyecto
 
@@ -25,16 +22,19 @@ terraform-supabase/
 ## Variables del Módulo Project
 
 ### Requeridas:
+
 - `database_password` (string, sensitive) - Contraseña de la base de datos
 - `name` (string) - Nombre del proyecto
 - `organization_id` (string) - ID de la organización
 - `region` (string) - Región del proyecto
 
 ### Opcionales:
+
 - `instance_size` (string) - Tamaño de la instancia (default: null)
 - `legacy_api_keys_enabled` (bool, deprecated) - Claves API legacy (default: null)
 
 ### Configuración:
+
 - `module_enabled` (bool) - Habilitar/deshabilitar módulo (default: true)
 
 ## Comandos Principales

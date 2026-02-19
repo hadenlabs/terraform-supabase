@@ -1,6 +1,3 @@
-
-
-
 <!--
 
 
@@ -15,30 +12,11 @@
 
   -->
 
-
- [![Terraform Version](https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform)](https://github.com/hashicorp/terraform/releases)
+[![Terraform Version](https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform)](https://github.com/hashicorp/terraform/releases)
 
 # project
 
-
-
-Module project supabase 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Module project supabase
 
 ## Usage
 
@@ -51,27 +29,22 @@ module "main" {
 }
 ```
 
-
-
-
-
-
-
  <!-- markdown-link-check-disable -->
 <!-- BEGIN_TF_DOCS -->
+
 ## Requirements
 
-| Name | Version |
-|------|---------|
+| Name      | Version  |
+| --------- | -------- |
 | terraform | >= 1.0.0 |
-| null | >= 2.0 |
-| supabase | 1.7.0 |
+| null      | >= 2.0   |
+| supabase  | 1.7.0    |
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| supabase | 1.7.0 |
+| Name     | Version |
+| -------- | ------- |
+| supabase | 1.7.0   |
 
 ## Modules
 
@@ -80,41 +53,36 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| --- | --- |
 | [supabase_project.this](https://registry.terraform.io/providers/supabase/supabase/1.7.0/docs/resources/project) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| database\_password | (Required, Sensitive) Password for the project database | `string` | n/a | yes |
-| instance\_size | (Optional) Desired instance size of the project | `string` | `"micro"` | no |
-| legacy\_api\_keys\_enabled | (Optional, Deprecated) Controls whether anon and service\_role JWT-based api keys should be enabled.<br/>Please note: these keys are no longer recommended (more information here). | `bool` | `null` | no |
-| module\_enabled | (Optional) Whether to create resources within the module or not. Default is true. | `bool` | `true` | no |
+| --- | --- | --- | --- | :-: |
+| database_password | (Required, Sensitive) Password for the project database | `string` | n/a | yes |
+| instance_size | (Optional) Desired instance size of the project | `string` | `"micro"` | no |
+| legacy_api_keys_enabled | (Optional, Deprecated) Controls whether anon and service_role JWT-based api keys should be enabled.<br/>Please note: these keys are no longer recommended (more information here). | `bool` | `null` | no |
+| module_enabled | (Optional) Whether to create resources within the module or not. Default is true. | `bool` | `true` | no |
 | name | (Required) Name of the project | `string` | n/a | yes |
-| organization\_id | (Required) Organization slug (found in the Supabase dashboard URL or organization settings) | `string` | n/a | yes |
+| organization_id | (Required) Organization slug (found in the Supabase dashboard URL or organization settings) | `string` | n/a | yes |
 | region | (Required) Region where the project is located | `string` | `"us-east-1"` | no |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| id | id of user |
-| module\_enabled | Whether the module is enabled. |
+| Name           | Description                    |
+| -------------- | ------------------------------ |
+| id             | id of user                     |
+| module_enabled | Whether the module is enabled. |
+
 <!-- END_TF_DOCS -->
 <!-- markdown-link-check-enable -->
-
-
-
-
 
 ## Help
 
 ### Got a question?
 
-
 File a GitHub [issue](https://github.com/hadenlabs/terraform-supabase/issues).
-
 
 ## Contributing
 
@@ -132,37 +100,21 @@ Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following co
 
 ### Backwards compatibility in `0.0.z` and `0.y.z` version
 
-- In the context of initial development, backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is
-  increased. (Initial development)
-- In the context of pre-release, backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is
-  increased. (Pre-release)
-
-
-
+- In the context of initial development, backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is increased. (Initial development)
+- In the context of pre-release, backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is increased. (Pre-release)
 
 ## Copyright
 
 Copyright © 2018-2026 [Hadenlabs](https://hadenlabs.com)
 
-
-
 ## Trademarks
 
 All other trademarks referenced herein are the property of their respective owners.
-
-
-
-
-
 
 ## License
 
 The code and styles are licensed under the LGPL-3.0 license [See project license.](LICENSE).
 
-
-
 ## Don't forget to 🌟 Star 🌟 the repo if you like project
 
-
 [Your feedback is appreciated](https://github.com/hadenlabs/terraform-supabase/issues)
-

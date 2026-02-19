@@ -253,8 +253,8 @@ go test ./internal/testutil/supabase/... -v
 
 ## See Also
 
-- [Main TestUtil Package](../README.md) - Comprehensive test utilities
-- [Terraform Supabase Project](../../../../README.md) - Main project documentation
+- [Main TestUtil Package](./../README.md) - Comprehensive test utilities
+- [Terraform Supabase Project](/modules/project/README.md) - Main project documentation
 - [Terratest Documentation](https://github.com/gruntwork-io/terratest) - Terraform testing framework
 
 ## License
