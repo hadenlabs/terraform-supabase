@@ -7,6 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const (
+	moduleProjectDir = "modules/project"
+)
+
 func TestDefault(t *testing.T) {
 	t.Parallel()
 
@@ -34,10 +38,9 @@ func TestDefaultWithOrganizationID(t *testing.T) {
 func TestDefaultForModule(t *testing.T) {
 	t.Parallel()
 
-	moduleDir := "modules/project"
-	options := DefaultForModule(moduleDir)
+	options := DefaultForModule(moduleProjectDir)
 
-	assert.Equal(t, moduleDir, options.TerraformDir)
+	assert.Equal(t, moduleProjectDir, options.TerraformDir)
 	assert.True(t, options.Upgrade)
 	assert.NotNil(t, options.Vars)
 	assert.Equal(t, "hadenlabs", options.Vars["organization_id"])
@@ -52,11 +55,10 @@ func TestDefaultForModule(t *testing.T) {
 func TestDefaultForModuleWithOrganizationID(t *testing.T) {
 	t.Parallel()
 
-	moduleDir := "modules/project"
 	orgID := "test-organization"
-	options := DefaultForModuleWithOrganizationID(moduleDir, orgID)
+	options := DefaultForModuleWithOrganizationID(moduleProjectDir, orgID)
 
-	assert.Equal(t, moduleDir, options.TerraformDir)
+	assert.Equal(t, moduleProjectDir, options.TerraformDir)
 	assert.True(t, options.Upgrade)
 	assert.NotNil(t, options.Vars)
 	assert.Equal(t, orgID, options.Vars["organization_id"])
@@ -69,7 +71,7 @@ func TestDefaultForModuleWithOrganizationID(t *testing.T) {
 func TestMergeProjectValues(t *testing.T) {
 	t.Parallel()
 
-	customValues := map[string]interface{}{
+	customValues := map[string]any{
 		"organization_id": "custom-org",
 		"extra_field":     "extra-value",
 	}
@@ -87,7 +89,7 @@ func TestMergeProjectValues(t *testing.T) {
 func TestMergeProjectValues_EmptyCustom(t *testing.T) {
 	t.Parallel()
 
-	result := MergeProjectValues(map[string]interface{}{})
+	result := MergeProjectValues(map[string]any{})
 	assert.Equal(t, "hadenlabs", result["organization_id"])
 	assert.NotEmpty(t, result["database_password"])
 	assert.NotEmpty(t, result["name"])
@@ -110,7 +112,7 @@ func TestMergeProjectValuesWithOrganizationID(t *testing.T) {
 	t.Parallel()
 
 	orgID := "specific-org"
-	customValues := map[string]interface{}{
+	customValues := map[string]any{
 		"extra_field": "extra-value",
 	}
 
@@ -127,16 +129,15 @@ func TestMergeProjectValuesWithOrganizationID(t *testing.T) {
 func TestTerraformOptions(t *testing.T) {
 	t.Parallel()
 
-	moduleDir := "modules/project"
-	customValues := map[string]interface{}{
+	customValues := map[string]any{
 		"organization_id": "test-org",
 		"name":            "test-project",
 	}
 
-	options := TerraformOptions(moduleDir, customValues)
+	options := TerraformOptions(moduleProjectDir, customValues)
 
 	assert.IsType(t, &terraform.Options{}, options)
-	assert.Equal(t, moduleDir, options.TerraformDir)
+	assert.Equal(t, moduleProjectDir, options.TerraformDir)
 	assert.True(t, options.Upgrade)
 	assert.Equal(t, "test-org", options.Vars["organization_id"])
 	assert.Equal(t, "test-project", options.Vars["name"])
@@ -148,16 +149,15 @@ func TestTerraformOptions(t *testing.T) {
 func TestTerraformOptionsWithOrganizationID(t *testing.T) {
 	t.Parallel()
 
-	moduleDir := "modules/project"
 	orgID := "custom-org-id"
-	customValues := map[string]interface{}{
+	customValues := map[string]any{
 		"name": "test-project",
 	}
 
-	options := TerraformOptionsWithOrganizationID(moduleDir, orgID, customValues)
+	options := TerraformOptionsWithOrganizationID(moduleProjectDir, orgID, customValues)
 
 	assert.IsType(t, &terraform.Options{}, options)
-	assert.Equal(t, moduleDir, options.TerraformDir)
+	assert.Equal(t, moduleProjectDir, options.TerraformDir)
 	assert.True(t, options.Upgrade)
 	assert.Equal(t, orgID, options.Vars["organization_id"])
 	assert.Equal(t, "test-project", options.Vars["name"])
@@ -171,12 +171,12 @@ func TestGetOrganizationID(t *testing.T) {
 
 	testCases := []struct {
 		name     string
-		vars     map[string]interface{}
+		vars     map[string]any
 		expected string
 	}{
 		{
 			name: "with organization_id",
-			vars: map[string]interface{}{
+			vars: map[string]any{
 				"organization_id": "my-org",
 				"name":            "test",
 			},
@@ -184,12 +184,12 @@ func TestGetOrganizationID(t *testing.T) {
 		},
 		{
 			name:     "without organization_id",
-			vars:     map[string]interface{}{"name": "test"},
+			vars:     map[string]any{"name": "test"},
 			expected: "hadenlabs",
 		},
 		{
 			name:     "empty map",
-			vars:     map[string]interface{}{},
+			vars:     map[string]any{},
 			expected: "hadenlabs",
 		},
 		{
@@ -199,7 +199,7 @@ func TestGetOrganizationID(t *testing.T) {
 		},
 		{
 			name: "non-string organization_id",
-			vars: map[string]interface{}{
+			vars: map[string]any{
 				"organization_id": 123,
 			},
 			expected: "hadenlabs",
@@ -218,7 +218,7 @@ func TestGetOrganizationID(t *testing.T) {
 func TestSetOrganizationID(t *testing.T) {
 	t.Parallel()
 
-	originalVars := map[string]interface{}{
+	originalVars := map[string]any{
 		"name":   "test-project",
 		"region": "us-east-1",
 	}
@@ -234,7 +234,7 @@ func TestSetOrganizationID(t *testing.T) {
 func TestSetOrganizationID_OverrideExisting(t *testing.T) {
 	t.Parallel()
 
-	originalVars := map[string]interface{}{
+	originalVars := map[string]any{
 		"organization_id": "old-org",
 		"name":            "test-project",
 	}
@@ -307,7 +307,7 @@ func TestIntegrationExample(t *testing.T) {
 	assert.Equal(t, "my-company", options2.Vars["organization_id"])
 
 	// Option 3: Merge with custom values
-	customValues := map[string]interface{}{
+	customValues := map[string]any{
 		"name":   "integration-test",
 		"region": "us-west-1",
 	}
@@ -345,10 +345,9 @@ func TestDefaultWithFaker(t *testing.T) {
 func TestDefaultForModuleWithFaker(t *testing.T) {
 	t.Parallel()
 
-	moduleDir := "modules/project"
-	options := DefaultForModuleWithFaker(moduleDir)
+	options := DefaultForModuleWithFaker(moduleProjectDir)
 
-	assert.Equal(t, moduleDir, options.TerraformDir)
+	assert.Equal(t, moduleProjectDir, options.TerraformDir)
 	assert.True(t, options.Upgrade)
 	assert.NotNil(t, options.Vars)
 
@@ -365,7 +364,7 @@ func TestDefaultForModuleWithFaker(t *testing.T) {
 func TestMergeDefaultsWithFaker(t *testing.T) {
 	t.Parallel()
 
-	customValues := map[string]interface{}{
+	customValues := map[string]any{
 		"name":           "custom-name-override",
 		"module_enabled": false,
 	}
@@ -387,16 +386,15 @@ func TestMergeDefaultsWithFaker(t *testing.T) {
 func TestTerraformOptionsWithFaker(t *testing.T) {
 	t.Parallel()
 
-	moduleDir := "modules/project"
-	customValues := map[string]interface{}{
+	customValues := map[string]any{
 		"name":   "faker-custom-project",
 		"region": "ap-southeast-1",
 	}
 
-	options := TerraformOptionsWithFaker(moduleDir, customValues)
+	options := TerraformOptionsWithFaker(moduleProjectDir, customValues)
 
 	assert.IsType(t, &terraform.Options{}, options)
-	assert.Equal(t, moduleDir, options.TerraformDir)
+	assert.Equal(t, moduleProjectDir, options.TerraformDir)
 	assert.True(t, options.Upgrade)
 
 	// Custom values should be used
@@ -423,7 +421,7 @@ func TestIntegrationWithFaker(t *testing.T) {
 	assert.NotEmpty(t, options1.Vars["name"])
 
 	// Option 2: Faker with custom overrides
-	customValues := map[string]interface{}{
+	customValues := map[string]any{
 		"name":                    "integration-test",
 		"legacy_api_keys_enabled": true,
 	}

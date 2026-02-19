@@ -26,15 +26,15 @@ type DefaultValues struct {
 
 The package provides sensible defaults for all Supabase project variables:
 
-| Field | Default Value | Description |
-|-------|---------------|-------------|
-| `DatabasePassword` | `"SecurePassword123!"` | Secure database password |
-| `Name` | `"test-project"` | Project name |
-| `OrganizationID` | `"org-test123"` | Organization ID |
-| `Region` | `"us-east-1"` | AWS region |
-| `InstanceSize` | `"small"` | Instance size |
-| `LegacyAPIKeysEnabled` | `false` | Legacy API keys disabled |
-| `ModuleEnabled` | `true` | Module enabled by default |
+| Field                  | Default Value          | Description               |
+| ---------------------- | ---------------------- | ------------------------- |
+| `DatabasePassword`     | `"SecurePassword123!"` | Secure database password  |
+| `Name`                 | `"test-project"`       | Project name              |
+| `OrganizationID`       | `"org-test123"`        | Organization ID           |
+| `Region`               | `"us-east-1"`          | AWS region                |
+| `InstanceSize`         | `"small"`              | Instance size             |
+| `LegacyAPIKeysEnabled` | `false`                | Legacy API keys disabled  |
+| `ModuleEnabled`        | `true`                 | Module enabled by default |
 
 ### 3. Builder Pattern Methods
 
@@ -157,26 +157,31 @@ func TestProjectCustom(t *testing.T) {
 ## Benefits
 
 ### 1. Consistency
+
 - All tests use the same base defaults
 - Reduces duplication of test configuration code
 - Ensures consistent test behavior
 
 ### 2. Maintainability
+
 - Changes to defaults only need to be made in one place
 - Clear separation between test logic and configuration
 - Easy to update when module variables change
 
 ### 3. Flexibility
+
 - Can use static defaults or faker-generated values
 - Easy to override specific values while keeping others
 - Supports both simple and complex test scenarios
 
 ### 4. Type Safety
+
 - Compile-time checking of field names
 - IDE autocompletion for all methods
 - Prevents runtime errors from typos
 
 ### 5. Integration
+
 - Works seamlessly with existing faker package
 - Compatible with Terratest framework
 - Easy to extend for new modules
@@ -203,6 +208,7 @@ The package includes comprehensive tests:
 3. **Integration Examples**: Show how to use in actual Terraform tests
 
 Run tests with:
+
 ```bash
 go test ./internal/testutil/... -v
 ```

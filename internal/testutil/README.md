@@ -242,15 +242,15 @@ func TestProjectSuite(t *testing.T) {
 
 ## Default Values Reference
 
-| Field | Default Value | Description |
-|-------|---------------|-------------|
-| `DatabasePassword` | `"SecurePassword123!"` | Database password for the project |
-| `Name` | `"test-project"` | Project name |
-| `OrganizationID` | `"org-test123"` | Organization ID |
-| `Region` | `"us-east-1"` | AWS region |
-| `InstanceSize` | `"small"` | Instance size |
-| `LegacyAPIKeysEnabled` | `false` | Whether legacy API keys are enabled |
-| `ModuleEnabled` | `true` | Whether the module is enabled |
+| Field                  | Default Value          | Description                         |
+| ---------------------- | ---------------------- | ----------------------------------- |
+| `DatabasePassword`     | `"SecurePassword123!"` | Database password for the project   |
+| `Name`                 | `"test-project"`       | Project name                        |
+| `OrganizationID`       | `"org-test123"`        | Organization ID                     |
+| `Region`               | `"us-east-1"`          | AWS region                          |
+| `InstanceSize`         | `"small"`              | Instance size                       |
+| `LegacyAPIKeysEnabled` | `false`                | Whether legacy API keys are enabled |
+| `ModuleEnabled`        | `true`                 | Whether the module is enabled       |
 
 ## Testing
 

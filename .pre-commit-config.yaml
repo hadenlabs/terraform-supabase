@@ -31,6 +31,7 @@ repos:
             go.sum|
             app/ia/datasets\/.*$|
             openapi.yaml|
+            agents.md|
             CHANGELOG.md|
             pnpm-lock.yaml|
             .+\.vendor\/.*$|

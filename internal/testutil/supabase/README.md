@@ -190,29 +190,34 @@ func TestProjectOrganizationSuite(t *testing.T) {
 ## Features
 
 ### 1. **Simplicity**
-   - Single-purpose structure focused on organization ID management
-   - Minimal API surface area
-   - Easy to understand and use
+
+- Single-purpose structure focused on organization ID management
+- Minimal API surface area
+- Easy to understand and use
 
 ### 2. **Immutability**
-   - All operations return new instances
-   - Prevents accidental mutation of shared configurations
-   - Thread-safe by design
+
+- All operations return new instances
+- Prevents accidental mutation of shared configurations
+- Thread-safe by design
 
 ### 3. **Consistency**
-   - Consistent default values across all tests
-   - Predictable behavior
-   - Easy to maintain and update
+
+- Consistent default values across all tests
+- Predictable behavior
+- Easy to maintain and update
 
 ### 4. **Terraform Integration**
-   - Seamless integration with Terratest
-   - Easy conversion to Terraform variables
-   - Support for merging with custom values
+
+- Seamless integration with Terratest
+- Easy conversion to Terraform variables
+- Support for merging with custom values
 
 ### 5. **Validation**
-   - Built-in validation functions
-   - Default value detection
-   - Input sanitization
+
+- Built-in validation functions
+- Default value detection
+- Input sanitization
 
 ## Best Practices
 
