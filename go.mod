@@ -1,13 +1,12 @@
 module github.com/hadenlabs/terraform-supabase
 
-go 1.22
+go 1.24
 
 require (
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/bxcodec/faker/v3 v3.6.0
 	github.com/caarlos0/env/v6 v6.10.1
 	github.com/go-playground/validator/v10 v10.9.0
-	github.com/gruntwork-io/terratest v0.46.11
 	github.com/joho/godotenv v1.5.1
 	github.com/lithammer/shortuuid/v3 v3.0.7
 	github.com/pkg/errors v0.9.1
@@ -15,6 +14,8 @@ require (
 	github.com/stretchr/testify v1.8.4
 	go.uber.org/zap v1.27.0
 )
+
+require github.com/gruntwork-io/terratest v0.46.11
 
 require (
 	cloud.google.com/go v0.110.0 // indirect

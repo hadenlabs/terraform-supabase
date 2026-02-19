@@ -8,7 +8,19 @@ import (
 
 func Generator() {
 	_ = fakerTag.AddProvider("ProjectNameFaker", func(v reflect.Value) (interface{}, error) {
-		return Realm().Name(), nil
+		return Project().Name(), nil
+	})
+	_ = fakerTag.AddProvider("ProjectOrganizationIDFaker", func(v reflect.Value) (interface{}, error) {
+		return Project().OrganizationID(), nil
+	})
+	_ = fakerTag.AddProvider("ProjectRegionFaker", func(v reflect.Value) (interface{}, error) {
+		return Project().Region(), nil
+	})
+	_ = fakerTag.AddProvider("ProjectInstanceSizeFaker", func(v reflect.Value) (interface{}, error) {
+		return Project().InstanceSize(), nil
+	})
+	_ = fakerTag.AddProvider("ProjectDatabasePasswordFaker", func(v reflect.Value) (interface{}, error) {
+		return Project().DatabasePassword(), nil
 	})
 	_ = fakerTag.AddProvider("UserUserNameFaker", func(v reflect.Value) (interface{}, error) {
 		return User().UserName(), nil

@@ -1,0 +1,139 @@
+package supabase
+
+import (
+	"fmt"
+)
+
+// Demo shows practical examples of using the supabase package
+func Demo() {
+	fmt.Println("🚀 Supabase TestUtil Package - Demonstration")
+	fmt.Println("=============================================")
+	fmt.Println()
+
+	// Section 1: Basic Project Creation
+	fmt.Println("1. BASIC PROJECT CREATION")
+	fmt.Println("-------------------------")
+
+	// 1.1 Default project (OrganizationID="hadenlabs", others=faker)
+	fmt.Println("\n1.1 Default Project:")
+	project1 := NewProject()
+	fmt.Printf("   • OrganizationID: %s (default: 'hadenlabs')\n", project1.OrganizationID)
+	fmt.Printf("   • Name: %s (faker-generated)\n", project1.Name)
+	fmt.Printf("   • Region: %s (faker-generated)\n", project1.Region)
+	fmt.Printf("   • InstanceSize: %s (faker-generated)\n", project1.InstanceSize)
+	fmt.Printf("   • DatabasePassword: %s... (faker-generated, hidden)\n", project1.DatabasePassword[:8])
+
+	// 1.2 All faker project
+	fmt.Println("\n1.2 All Faker Project:")
+	project2 := NewProjectWithFaker()
+	fmt.Printf("   • OrganizationID: %s (faker-generated)\n", project2.OrganizationID)
+	fmt.Printf("   • Name: %s (faker-generated)\n", project2.Name)
+	fmt.Printf("   • Region: %s (faker-generated)\n", project2.Region)
+	fmt.Printf("   • InstanceSize: %s (faker-generated)\n", project2.InstanceSize)
+
+	// Section 2: Builder Pattern
+	fmt.Println("\n\n2. BUILDER PATTERN (IMMUTABLE)")
+	fmt.Println("-----------------------------")
+
+	original := NewProject()
+	fmt.Println("\n2.1 Original Project:")
+	fmt.Printf("   • OrganizationID: %s\n", original.OrganizationID)
+	fmt.Printf("   • Name: %s\n", original.Name)
+
+	modified := original.
+		WithOrganizationID("acme-corporation").
+		WithName("production-database").
+		WithRegion("eu-west-1").
+		WithInstanceSize("xlarge").
+		WithDatabasePassword("SuperSecure!123")
+
+	fmt.Println("\n2.2 Modified Project (new instance):")
+	fmt.Printf("   • OrganizationID: %s\n", modified.OrganizationID)
+	fmt.Printf("   • Name: %s\n", modified.Name)
+	fmt.Printf("   • Region: %s\n", modified.Region)
+	fmt.Printf("   • InstanceSize: %s\n", modified.InstanceSize)
+
+	fmt.Println("\n2.3 Immutability Check:")
+	fmt.Printf("   • Original OrganizationID unchanged: %s\n", original.OrganizationID)
+	fmt.Printf("   • Original Name unchanged: %s\n", original.Name)
+
+	// Section 3: Terraform Integration
+	fmt.Println("\n\n3. TERRAFORM INTEGRATION")
+	fmt.Println("------------------------")
+
+	fmt.Println("\n3.1 Convert to Terraform Variables:")
+	tfVars := modified.ToMap()
+	fmt.Printf("   • Total variables: %d\n", len(tfVars))
+	fmt.Println("   • Variables included:")
+	for key := range tfVars {
+		fmt.Printf("     - %s\n", key)
+	}
+
+	fmt.Println("\n3.2 Custom Boolean Values:")
+	customTfVars := modified.ToMapWithCustomValues(true, false)
+	fmt.Printf("   • legacy_api_keys_enabled: %v\n", customTfVars["legacy_api_keys_enabled"])
+	fmt.Printf("   • module_enabled: %v\n", customTfVars["module_enabled"])
+
+	// Section 4: Utility Functions
+	fmt.Println("\n\n4. UTILITY FUNCTIONS")
+	fmt.Println("-------------------")
+
+	fmt.Println("\n4.1 Default Projects:")
+	fmt.Printf("   • Default().OrganizationID: %s\n", Default().OrganizationID)
+	fmt.Printf("   • DefaultWithFaker().OrganizationID: %s (faker)\n", DefaultWithFaker().OrganizationID)
+	fmt.Printf("   • DefaultWithOrganizationID('test-org').OrganizationID: %s\n",
+		DefaultWithOrganizationID("test-org").OrganizationID)
+
+	// Section 5: Common Use Cases
+	fmt.Println("\n\n5. COMMON USE CASES")
+	fmt.Println("------------------")
+
+	fmt.Println("\n5.1 Test with Default Organization:")
+	fmt.Println(`   project := NewProject()
+   // OrganizationID="hadenlabs", others=faker
+   tfVars := project.ToMap()`)
+
+	fmt.Println("\n5.2 Test with Custom Organization:")
+	fmt.Println(`   project := NewProject().
+       WithOrganizationID("my-company").
+       WithName("staging")
+   tfVars := project.ToMap()`)
+
+	fmt.Println("\n5.3 Integration Test Pattern:")
+	fmt.Println(`   // In test file:
+   terraformOptions := DefaultForModuleWithFaker("modules/project")
+   terraformOptions.Vars["module_enabled"] = true
+   // defer terraform.Destroy(t, terraformOptions)
+   // terraform.InitAndApply(t, terraformOptions)`)
+
+	// Section 6: Validation and Helpers
+	fmt.Println("\n\n6. VALIDATION & HELPERS")
+	fmt.Println("----------------------")
+
+	fmt.Println("\n6.1 Organization ID Validation:")
+	testOrgs := []string{"hadenlabs", "my-org", "", "   "}
+	for _, org := range testOrgs {
+		fmt.Printf("   • ValidateOrganizationID(\"%s\"): %v\n", org, ValidateOrganizationID(org))
+	}
+
+	fmt.Println("\n6.2 Default Organization ID Check:")
+	for _, org := range testOrgs {
+		fmt.Printf("   • IsDefaultOrganizationID(\"%s\"): %v\n", org, IsDefaultOrganizationID(org))
+	}
+
+	// Section 7: Summary
+	fmt.Println("\n\n7. SUMMARY")
+	fmt.Println("----------")
+	fmt.Println("✅ OrganizationID: Defaults to 'hadenlabs', customizable")
+	fmt.Println("✅ Other fields: Automatically generated by faker")
+	fmt.Println("✅ Immutable: All operations return new instances")
+	fmt.Println("✅ Terraform-ready: Easy conversion to Terraform variables")
+	fmt.Println("✅ Utility functions: Ready-to-use test configurations")
+	fmt.Println("✅ Validation: Built-in validation for organization IDs")
+
+	fmt.Println("\n🎯 Ready for testing Supabase projects!")
+	fmt.Println("\nUsage in tests:")
+	fmt.Println("  import \"github.com/hadenlabs/terraform-supabase/internal/testutil/supabase\"")
+	fmt.Println("  project := supabase.NewProject()")
+	fmt.Println("  options := supabase.DefaultForModule(\"modules/project\")")
+}
