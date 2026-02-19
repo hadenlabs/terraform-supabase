@@ -1,0 +1,14 @@
+---
+version: "3"
+
+tasks:
+  readme:
+    run: once
+    desc: Generate Readme
+    silent: true
+    cmds:
+      - >-
+        gomplate --file {{.README_TEMPLATE}}
+        --out modules/project/README.md
+        --datasource config=modules/project/README.yaml
+        --datasource includes={{.README_INCLUDES}}

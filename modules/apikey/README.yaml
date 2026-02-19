@@ -1,0 +1,36 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this user
+name: project
+
+# Tags of this user
+tags:
+  - supabase
+  - terraform
+  - project
+
+# License of this user
+license: "LGPL-3.0"
+
+github_repo: hadenlabs/terraform-supabase
+
+# Badges to display
+badges:
+  - name: Terraform Version
+    image: https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
+    url: https://github.com/hashicorp/terraform/releases
+
+# Short description of this user
+description: |-
+  Module project supabase
+
+usages:
+  - modules/project/docs/usage.md
+
+# Modules
+include:
+  - modules/project/docs/include/terraform.md
