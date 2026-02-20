@@ -20,8 +20,9 @@ module "supabase_apikey" {
   source     = "../.."
 
   # Required variables
-  project_id = module.supabase_project.id
-  name       = "apikey"
+  project_id  = module.supabase_project.id
+  name        = var.apikey_name
+  description = var.apikey_description
 
   # Module configuration
   module_enabled = var.module_enabled

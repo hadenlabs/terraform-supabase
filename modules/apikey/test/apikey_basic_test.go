@@ -6,6 +6,7 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
 
+	"github.com/hadenlabs/terraform-supabase/internal/app/external/faker"
 	"github.com/hadenlabs/terraform-supabase/internal/testutil/supabase"
 )
 
@@ -19,6 +20,8 @@ func TestProjectBasicSuccess(t *testing.T) {
 	databasePassword := project.DatabasePassword
 	name := project.Name
 	region := project.Region
+	apikeyName := faker.ApiKey().Name()
+	apikeyDescription := faker.ApiKey().Description()
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
@@ -30,6 +33,9 @@ func TestProjectBasicSuccess(t *testing.T) {
 			"organization_id":         organizationID,
 			"region":                  region,
 			"legacy_api_keys_enabled": false,
+
+			"apikey_name":        apikeyName,
+			"apikey_description": apikeyDescription,
 		},
 	}
 

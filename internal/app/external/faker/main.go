@@ -22,4 +22,12 @@ func Generator() {
 	_ = fakerTag.AddProvider("ProjectDatabasePasswordFaker", func(v reflect.Value) (any, error) {
 		return Project().DatabasePassword(), nil
 	})
+
+	_ = fakerTag.AddProvider("ApiKeyNameFaker", func(v reflect.Value) (any, error) {
+		return ApiKey().Name(), nil
+	})
+
+	_ = fakerTag.AddProvider("ApiKeyDescriptionFaker", func(v reflect.Value) (any, error) {
+		return ApiKey().Description(), nil
+	})
 }

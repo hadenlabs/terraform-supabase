@@ -36,3 +36,15 @@ variable "module_enabled" {
   description = "Whether to create resources within the module or not"
   default     = true
 }
+
+# apikey
+
+variable "apikey_name" {
+  type        = string
+  description = "name of the apikey"
+}
+
+variable "apikey_description" {
+  type        = string
+  description = "description of the apikey"
+}
