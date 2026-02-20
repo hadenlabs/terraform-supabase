@@ -4,7 +4,7 @@
 # These variables must be set when using this module.
 # ----------------------------------------------------------------------------------------------------------------------
 
-variable "project_ref" {
+variable "project_id" {
   type        = string
   description = "(Required) Project reference ID"
 }

@@ -2,7 +2,7 @@ locals {
   defaults = {}
 
   input = {
-    project_ref = var.project_ref
+    project_ref = var.project_id
     name        = var.name
     description = var.description
 
